@@ -139,28 +139,7 @@ const RegistrationForm = () => {
                           placeholder="Condirm Password"
                         />  
                         {errors.password_confirmation && <span className="text-danger">{errors.password_confirmation[0]}</span>}   
-                      </div>
-{/* User Type */}
-                      <div className="form-group">
-                        <label>User Type</label>
-                        <div>
-                          <button
-                            type="button"
-                            onClick={() => handleUserTypeChange('admin')}
-                            className={formData.user_type === 'admin' ? 'selected' : ''}
-                          >
-                            Admin
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => handleUserTypeChange('user')}
-                            className={formData.user_type === 'user' ? 'selected' : ''}
-                          >
-                            User
-                          </button>
-                        </div>
                       </div>    
-
                         <input type="submit" className="btn btn-pink w-100 my-3" value="Register"/>
                         <p className="text-center fs-5">Already have an account?</p>
                         <Link to = "/login" className="fs-5">Login</Link>

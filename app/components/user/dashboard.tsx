@@ -162,9 +162,9 @@ const dashboard = () => {
                         <span className='text-danger'> (Fully Booked!)</span>
                       )}
                     </h1>
-                    {user?.user_type === "admin" && event.almost_full && (
+                    {user?.user_type === "admin" && (
                       <div className='position-absolute top-0 end-0 p-2 text-danger'>
-                        <span>Almost Full</span>
+                        <span>{event.full_capacity ? 'Full': (event.almost_full ? 'Almost Full': '')}</span>
                       </div>
                     )}
 
