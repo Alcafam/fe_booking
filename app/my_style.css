@@ -1,0 +1,54 @@
+/* header section start */
+
+.header_section {
+    width: 100%;
+    float: left;
+    background-color: #fef4ec;
+    height: auto;
+    background-size: 100%;
+}
+
+.bg-light {
+    background-color: transparent!important;
+}
+
+.toggle_icon {
+    padding: 10px 0px;
+}
+
+.login_text {
+    width: 100%;
+    float: left;
+}
+
+.login_text ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.login_text li {
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: uppercase;
+    float: left;
+    padding-left: 15px;
+}
+
+.login_text a {
+    color: #ffffff;
+}
+
+.login_text a:hover {
+    color: #ffffff;
+}
+
+.navbar-light .navbar-brand {
+    color: rgba(0, 0, 0, .9);
+    padding-left: 90px;
+    z-index: 2;
+}
+/* header section end */
+
+.bg-lighter {
+    background-color:#ffefe2 !important;
+}
