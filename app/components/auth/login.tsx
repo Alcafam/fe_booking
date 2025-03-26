@@ -41,8 +41,11 @@ const LoginForm = () => {
     setErrors('');
 
     try {
-      const response = await axios.post(`${API_URL}/api/auth/login`, formData, {
-        withCredentials: true
+      const response = await axios.post(`${API_URL}/api/auth/login`, formData,
+        {
+          'headers': {
+            'accept': `application/json`,
+        },
       });
       const data = await response.data;
       setMessage(data.message);
