@@ -115,27 +115,6 @@ const LoginForm = () => {
               />
               {errors?.password ? <span className="text-danger">{errors.password[0]}</span> : null}
           </div>
-              
-{/* User Type */}
-              <div className="form-group">
-                <label>User Type</label>
-                <div>
-                  <button
-                    type="button"
-                    onClick={() => handleUserTypeChange('admin')}
-                    className={formData.user_type === 'admin' ? 'bg-primary text-white' : ''}
-                  >
-                    Admin
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleUserTypeChange('user')}
-                    className={formData.user_type === 'user' ? 'bg-primary text-white' : ''}
-                  >
-                    User
-                  </button>
-                </div>
-              </div>
 
               <input
                 type="submit"
