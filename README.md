@@ -1,87 +1,71 @@
-# Welcome to React Router!
+# Event Booking: [https://fe-booking-eight.vercel.app/](https://fe-booking-eight.vercel.app/)
 
-A modern, production-ready template for building full-stack React applications using React Router.
+This project is a React-based Event Booking application where users can browse events and make bookings. It uses `react-router` for client-side routing and other modern React features.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## Setup Instructions
 
-## Features
+Follow these steps to set up the project on your local machine:
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+### Prerequisites
 
-## Getting Started
+Before you begin, ensure you have the following installed:
 
-### Installation
+- **Node.js** (v16 or later) – to run the development server and install dependencies.
+- **npm** or **yarn** – to manage JavaScript dependencies.
 
-Install the dependencies:
+### Installation Steps
 
-```bash
-npm install
-```
+**Note**: Don't mind the pushed .env because it only had one line though I know that .env should not be pushed
+1. **Clone the repository**:
+   Open your terminal and run the following command to clone the repository:
+   ```bash
+   git clone https://github.com/Alcafam/fe_booking.git
+   cd fe_booking
+   ```
 
-### Development
+2. **Install dependencies**:
+   If you're using **npm**:
+   ```bash
+   npm install
+   ```
 
-Start the development server with HMR:
+   Or if you're using **yarn**:
+   ```bash
+   yarn install
+   ```
 
-```bash
-npm run dev
-```
+3. **Run the development server**:
+   After installing the dependencies, you can start the development server. Run the following command to launch the app:
 
-Your application will be available at `http://localhost:5173`.
+   If you're using **npm**:
+   ```bash
+   npm start
+   ```
 
-## Building for Production
+   Or if you're using **yarn**:
+   ```bash
+   yarn start
+   ```
+   
+4. **Open the application in your browser**:
 
-Create a production build:
+   After starting the server, you can view the application by navigating to:
+   [http://localhost:3000](http://localhost:3000) or whatever link will the app gives you
+---
 
-```bash
-npm run build
-```
+## Brief Explanation of Approach for React
 
-## Deployment
+1. **Make It Work First, Then Refactor**:  
+   The primary goal during the development was to make the core features functional as quickly as possible. This included implementing event booking, basic authentication, and necessary database interactions. Once the core features were confirmed to be working, refactoring and optimization were done to ensure maintainability and improve performance.
 
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+2. I did not do much for best practices...haha
 
 ---
 
-Built with ❤️ using React Router.
+## Notes on Incomplete or Additional Features
+
+1. Email Confirmation After Booking  
+2. Event Search/Filter by Category or Date  
+3. Authentication - HTTPOnly Cookies for Improved Security  
+
+---
