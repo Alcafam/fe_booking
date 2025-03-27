@@ -70,3 +70,25 @@ Before you begin, ensure you have the following installed:
 3. Authentication - HTTPOnly Cookies for Improved Security  
 
 ---
+
+
+## Credentials that you can use
+**Admin**
+email : alice.johnson@example.com
+password: password
+
+email : alice.johnson@example.com
+password: password
+
+**Users**
+email : bob.smith@example.com
+password: password
+
+email : john.doe@example.com
+password: password
+
+email : sarah.miller@example.com
+password: password
+
+email : james.williams@example.com
+password: password
