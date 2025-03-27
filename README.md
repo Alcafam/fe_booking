@@ -59,7 +59,7 @@ Before you begin, ensure you have the following installed:
 1. **Make It Work First, Then Refactor**:  
    The primary goal during the development was to make the core features functional as quickly as possible. This included implementing event booking, basic authentication, and necessary database interactions. Once the core features were confirmed to be working, refactoring and optimization were done to ensure maintainability and improve performance.
 
-2. I did not do much for best practices...haha
+2. I did not do much for best practices...haha. I have not made some reusable components and there were a lot of redundant codes.
 
 ---
 
