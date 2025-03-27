@@ -1,6 +1,7 @@
 # Event Booking: [https://fe-booking-eight.vercel.app/](https://fe-booking-eight.vercel.app/)
 
 This project is a React-based Event Booking application where users can browse events and make bookings. It uses `react-router` for client-side routing and other modern React features.
+**Deployed @ vercel**
 
 ## Setup Instructions
 
