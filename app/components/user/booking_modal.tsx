@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
-  id: string;  // Add an id prop to identify the modal
+  id: string; 
   mode: 'book' | 'cancel' ;
   refetchEvents: () => void;
 }
@@ -14,7 +14,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, id, mode, refetchEvents }) => {
 const [bookMess, setbookMess] = useState('');
 
-const handleFormSubmit = async (e :any) => {
+const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     try {

@@ -14,13 +14,12 @@ const RegistrationForm = () => {
     email: '',
     password: '',
     password_confirmation: '',
-    user_type: 'user', // Default to 'user'
+    user_type: 'user', 
   });
-
   const { isAuthenticated, login } = useAuth();
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Record<string, string>>();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -28,44 +27,38 @@ const RegistrationForm = () => {
     }));
   };
 
-  const handleUserTypeChange = (type) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      user_type: type,
-    }));
+  const showSwal = async (data: any) => {
+    const alertClass = data.success ? "text-success" : "text-danger";
+    Swal.fire({
+      title: data.message,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      customClass: {
+        title: alertClass,
+      },
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await setErrors({}); // Reset previous errors
+    setErrors({}); // Reset previous errors
 
     try {
-      // Send the registration request to the Laravel API
       const response = await axios.post(`${API_URL}/api/auth/register`, formData);
       const data = await response.data;
-      console.log(data);
+      console.log(response);
 
-      const alertClass = data.success ? "text-success" : "text-danger";
-      Swal.fire({
-        title: data.message,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 1000,
-        customClass: {
-          title: alertClass,
-        },
-      });
-
-      if(!data.success){
-        await setErrors(data.errors);
-      }else{
-        localStorage.setItem('auth_token', data.token);
-        login(data.user);
-      }
-
-
-    } catch (error) {
-        console.error('An unexpected error occurred:', error);
+      localStorage.setItem('auth_token', data.token);
+      showSwal(data);
+      login(data.user);
+    } catch (error: any) {
+      console.error('An unexpected error occurred:', error);
+      console.log(error.response.data)
+  
+      const errorData = error.response ? error.response.data : { message: 'An unexpected error occurred', success: false };
+      setErrors(errorData.errors);
+      showSwal(errorData);
     }
   };
 
@@ -90,7 +83,7 @@ const RegistrationForm = () => {
                           onChange={handleChange}
                           placeholder="First Name"
                         />  
-                        {errors.first_name && <span className="text-danger">{errors.first_name[0]}</span>}   
+                        {errors?.first_name && <span className="text-danger">{errors.first_name[0]}</span>}   
                       </div>
 {/* Last Name */}
                       <div className="form-group">
@@ -102,7 +95,7 @@ const RegistrationForm = () => {
                           onChange={handleChange}
                           placeholder="Last Name"
                         />  
-                        {errors.last_name && <span className="text-danger">{errors.last_name[0]}</span>}   
+                        {errors?.last_name && <span className="text-danger">{errors.last_name[0]}</span>}   
                       </div>
 {/* Email */}
                       <div className="form-group">
@@ -114,7 +107,7 @@ const RegistrationForm = () => {
                           onChange={handleChange}
                           placeholder="Email Address"
                         />  
-                        {errors.email && <span className="text-danger">{errors.email[0]}</span>}   
+                        {errors?.email && <span className="text-danger">{errors.email[0]}</span>}   
                       </div>
 {/* Password */}
                       <div className="form-group">
@@ -126,7 +119,7 @@ const RegistrationForm = () => {
                           onChange={handleChange}
                           placeholder="Password"
                         />  
-                        {errors.password && <span className="text-danger">{errors.password[0]}</span>}   
+                        {errors?.password && <span className="text-danger">{errors.password[0]}</span>}   
                       </div>
 {/* Password Confirmation */}
                       <div className="form-group">
@@ -136,13 +129,13 @@ const RegistrationForm = () => {
                           name="password_confirmation"
                           value={formData.password_confirmation}
                           onChange={handleChange}
-                          placeholder="Condirm Password"
+                          placeholder="Confirm Password"
                         />  
-                        {errors.password_confirmation && <span className="text-danger">{errors.password_confirmation[0]}</span>}   
+                        {errors?.password_confirmation && <span className="text-danger">{errors.password_confirmation[0]}</span>}   
                       </div>    
                         <input type="submit" className="btn btn-pink w-100 my-3" value="Register"/>
                         <p className="text-center fs-5">Already have an account?</p>
-                        <Link to = "/login" className="fs-5">Login</Link>
+                        <Link to = "/" className="fs-5">Login</Link>
                     </form>
                 </div>
                 </div>

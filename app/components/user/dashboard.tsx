@@ -66,59 +66,57 @@ const dashboard = () => {
     setIsBookModalOpen(false);
   };
 
-    const refetchEvents = async (page = 1) => {
-      try {
-        const response = await axios.get(`${API_URL}/api/events/event_list?page=${page}`, {
-          headers: {
-              'Authorization': `Bearer ${localStorage.getItem('auth_token')}`,
-          },
-        });
-        const data = await response.data;
-        const formattedProducts =
-          data?.data?.map((event: Event) => ({
-            id: event.id,
-            name: event.name,
-            description: event.description,
-            event_date: event.event_date,
-            event_time: event.event_time,
-            location: event.location,
-            total_capacity: event.total_capacity,
-            remaining_slot: event.remaining_slot,
-            total_bookings: event.total_bookings,
-            created_at: event.created_at,
-            almost_full: event.almost_full,
-            booked: event.booked,
-            full_capacity: event.full_capacity
-          })) || [];
+  const refetchEvents = async (page = 1) => {
+    try {
+      const response = await axios.get(`${API_URL}/api/events/event_list?page=${page}`, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('auth_token')}`,
+        },
+      });
+      const data = await response.data;
+      const formattedProducts =
+        data?.data?.map((event: Event) => ({
+          id: event.id,
+          name: event.name,
+          description: event.description,
+          event_date: event.event_date,
+          event_time: event.event_time,
+          location: event.location,
+          total_capacity: event.total_capacity,
+          remaining_slot: event.remaining_slot,
+          total_bookings: event.total_bookings,
+          created_at: event.created_at,
+          almost_full: event.almost_full,
+          booked: event.booked,
+          full_capacity: event.full_capacity
+        })) || [];
 
-          setEvents(formattedProducts);
-          setPagination(data);
-          setTotalEvent(data.total);
-      }catch (error) {
-        console.error('An unexpected error occurred:', error);
-      }
+        setEvents(formattedProducts);
+        setPagination(data);
+        setTotalEvent(data.total);
+    }catch (error) {
+      console.error('An unexpected error occurred:', error);
     }
+  }
   
-    const handlePageChange = (url: string) => {
-      const page = new URL(url).searchParams.get('page');
-      if (page) {
-        refetchEvents(parseInt(page, 10));
-      }
-    };
+  const handlePageChange = (url: string) => {
+    const page = new URL(url).searchParams.get('page');
+    if (page) {
+      refetchEvents(parseInt(page, 10));
+    }
+  };
 
-  useEffect(() => {
-    refetchEvents();
-  }, [])
-
-  // Truncate description to 50 words and preserve newlines
   const truncateDescription = (text: string, wordLimit: number) => {
     const words = text.split(' ');
     const truncated = words.slice(0, wordLimit).join(' ');
     const hasMoreWords = words.length > wordLimit;
     const result = truncated + (hasMoreWords ? ' . . .' : '');
-
   return result.replace(/\n/g, '<br />');
   };
+
+  useEffect(() => {
+    refetchEvents();
+  }, [])
 
     return (
       <div>
@@ -175,7 +173,7 @@ const dashboard = () => {
                     )}
                   </div>
                   
-                  {/* Truncate the description */}
+{/* Truncate the description */}
                   <p className="card-text" dangerouslySetInnerHTML={{ __html: truncateDescription(event.description, 50) }} />
                   <p className="card-text"><strong>Date:</strong> {event.event_date} @ {event.event_time}</p>
                   <p className="card-text"><strong>Location:</strong> {event.location}</p>
@@ -193,7 +191,8 @@ const dashboard = () => {
                       </button>
                     </div>
                   )}
-                  {/* Only show the form if the user is an user */}
+
+{/* Only show the form if the user is an user */}
                     {user?.user_type === "user" && !event.full_capacity &&(
                       <button 
                         className={`ms-1 btn ${!event.booked ? 'btn-success' : 'btn-danger'}`} 
@@ -209,14 +208,14 @@ const dashboard = () => {
             </div>
           ))}
         </div>
-        {/* Pagination Links */}
+
+{/* Pagination Links */}
         <div className="d-flex justify-content-center">
           {pagination.prev_page_url && (
             <button className="btn btn-secondary mx-2" onClick={() => handlePageChange(pagination.prev_page_url)}>
               Previous
             </button>
           )}
-
           {pagination.next_page_url && (
             <button className="btn btn-secondary mx-2" onClick={() => handlePageChange(pagination.next_page_url)}>
               Next
@@ -227,10 +226,10 @@ const dashboard = () => {
     );
   }
   
-  export default dashboard;
+export default dashboard;
 
-  export function meta({}: Route.MetaArgs) {
-    return [
-      { title: "Dashboard - Event Booking" },
-    ];
-  }
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Dashboard - Event Booking" },
+  ];
+}

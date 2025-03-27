@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router";
 import type { Route } from "./+types/login";
@@ -16,11 +16,9 @@ const LoginForm = () => {
   });
 
   const { isAuthenticated,login, loading } = useAuth();
-  const [errors, setErrors] = useState('');
-  const [message, setMessage] = useState('');
-  const [success, setSuccess] = useState(true);
+  const [errors, setErrors] = useState<Record<string, string>>();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -28,50 +26,45 @@ const LoginForm = () => {
     }));
   };
 
-  const handleUserTypeChange = (type) => {
-    setFormData((prevState) => ({
-      ...prevState,
-
-      user_type: type,
-    }));
+  const showSwal = async (data: any) => {
+    const alertClass = data.success ? "text-success" : "text-danger";
+    Swal.fire({
+      title: data.message,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1000,
+      customClass: {
+        title: alertClass,
+      },
+    });
   };
-
-  const handleSubmit = async (e) => {
+  
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrors('');
-
+  
     try {
-      const response = await axios.post(`${API_URL}/api/auth/login`, formData,
-        {
-          'headers': {
-            'accept': `application/json`,
+      const response = await axios.post(`${API_URL}/api/auth/login`, formData, {
+        headers: {
+          accept: "application/json",
         },
       });
-      const data = await response.data;
-      setMessage(data.message);
-      setSuccess(false);
-      
-      const alertClass = data.success ? "text-success" : "text-danger";
-      Swal.fire({
-        title: data.message,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 1000,
-        customClass: {
-          title: alertClass,
-        },
-      });
+  
+      console.log(response);
+      const data = response.data;
+      showSwal(data);
 
-      if (!data.success) {
-        setErrors(data.errors);
-      } else {
-        localStorage.setItem('auth_token', data.token);
-        login(data.user);
-      }
-    } catch (error) {
+      localStorage.setItem('auth_token', data.token);
+      login(data.user);
+    } catch (error: any) {
       console.error('An unexpected error occurred:', error);
+      console.log(error.response.data)
+  
+      const errorData = error.response ? error.response.data : { message: 'An unexpected error occurred', success: false };
+      setErrors(errorData.errors);
+      showSwal(errorData);
     }
   };
+  
 
   if (loading) {
     return <div>Loading...</div>; // Render a loading state while checking localStorage
@@ -87,7 +80,6 @@ const LoginForm = () => {
         <div className="login-container text-center">
           <h3 className="fs-2">Login Form</h3>
           <div className="container-content">
-          {/* {!success && message ? <span className="text-danger">{message}</span> : null} */}
             <form className="mt-3" onSubmit={handleSubmit}>
 {/* Email Address */}
             <div className="form-group">
