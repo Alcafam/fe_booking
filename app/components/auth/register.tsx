@@ -68,7 +68,7 @@ const RegistrationForm = () => {
 
     return (
         <div className="product_section layout_padding">
-        <div className="container w-25">
+        <div className="container">
             <div className="login-container text-center">
                 <h3 className="fs-2">Registration Form</h3>
                 <div className="container-content">
