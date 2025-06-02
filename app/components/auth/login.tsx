@@ -120,29 +120,22 @@ const LoginForm = () => {
         </div>
         <div className="bg-warning container mt-5 p-3 rounded">
           <b>Note:</b>
-          <br />
-          For testing purposes, you can use the following accounts:
+          <p>For testing purposes, you can use the following accounts:</p>
           <ul className="mt-2">
             <li>
               <b>Admin Account</b>
-              <br />
-              Email: <code>alice.johnson@example.com</code>
-              <br />
-              Password: <code>password</code>
+              <p>Email: <code>alice.johnson@example.com</code></p>
+              <p>Password: <code>password</code></p>
             </li>
             <li className="mt-2">
               <b>User Account 1</b>
-              <br />
-              Email: <code>james.williams@example.com</code>
-              <br />
-              Password: <code>password</code>
+              <p>Email: <code>james.williams@example.com</code></p>
+              <p>Password: <code>password</code></p>              
             </li>
             <li className="mt-2">
               <b>User Account 2</b>
-              <br />
-              Email: <code>sarah.miller@example.com</code>
-              <br />
-              Password: <code>password</code>
+              <p>Email: <code>sarah.miller@example.com</code></p>
+              <p>Password: <code>password</code></p>
             </li>
           </ul>
         </div>

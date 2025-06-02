@@ -138,38 +138,7 @@ const RegistrationForm = () => {
                         <Link to = "/" className="fs-5">Login</Link>
                     </form>
                 </div>
-            </div>
-
-            <div className="bg-warning container mt-5 p-3 rounded">
-              <b>Note:</b>
-              <br />
-              For testing purposes, you can use the following accounts:
-              <ul className="mt-2">
-                <li>
-                  <b>Admin Account</b>
-                  <br />
-                  Email: <code>alice.johnson@example.com</code>
-                  <br />
-                  Password: <code>password</code>
-                </li>
-                <li className="mt-2">
-                  <b>User Account 1</b>
-                  <br />
-                  Email: <code>james.williams@example.com</code>
-                  <br />
-                  Password: <code>password</code>
-                </li>
-                <li className="mt-2">
-                  <b>User Account 2</b>
-                  <br />
-                  Email: <code>sarah.miller@example.com</code>
-                  <br />
-                  Password: <code>password</code>
-                </li>
-              </ul>
-            </div>
-
-        </div>
+                </div>
         </div>
     </div>
     )
