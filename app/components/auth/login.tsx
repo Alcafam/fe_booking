@@ -116,27 +116,27 @@ const LoginForm = () => {
               <p className="fs-5 text-centerenter">Do not have an account?</p>
               <Link to="/register" className="fs-5">Register</Link>
             </form>
-
-            <div class="bg-warning container mt-5 p-3 rounded">
-                <b>Note:</b><br>
-                For testing purposes, you can use the following accounts:
-                <ul class="mt-2">
-                    <li><b>Admin Account</b><br>
-                        Email: <code>alice.johnson@example.com</code><br>
-                        Password: <code>password</code>
-                    </li>
-                    <li class="mt-2"><b>User Account 1</b><br>
-                        Email: <code>james.williams@example.com</code><br>
-                        Password: <code>password</code>
-                    </li>
-                    <li class="mt-2"><b>User Account 2</b><br>
-                        Email: <code>sarah.miller@example.com</code><br>
-                        Password: <code>password</code>
-                    </li>
-                </ul>
-            </div>
           </div>
         </div>
+        <div class="bg-warning container mt-5 p-3 rounded">
+              <b>Note:</b><br/>
+              For testing purposes, you can use the following accounts:
+              <ul class="mt-2">
+                  <li><b>Admin Account</b><br/>
+                      Email: <code>alice.johnson@example.com</code><br/>
+                      Password: <code>password</code>
+                  </li>
+                  <li class="mt-2"><b>User Account 1</b><br/>
+                      Email: <code>james.williams@example.com</code><br/>
+                      Password: <code>password</code>
+                  </li>
+                  <li class="mt-2"><b>User Account 2</b><br/>
+                      Email: <code>sarah.miller@example.com</code><br/>
+                      Password: <code>password</code>
+                  </li>
+              </ul>
+          </div>
+      </div>
       </div>
     </div>
   );
